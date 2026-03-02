@@ -12,6 +12,7 @@ Starter repository for Partner Integration APIs:
 1. Review and edit the OpenAPI contract.
 2. Update APIC product/plan definitions to match your org.
 3. Import API + Product into IBM API Connect SaaS.
+4. Use GitHub Actions workflow `.github/workflows/openapi-ci.yml` to lint and validate OpenAPI on push/PR.
 
 ## Suggested next steps
 

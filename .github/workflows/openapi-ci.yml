@@ -1,0 +1,35 @@
+name: OpenAPI CI
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenAPI tools
+        run: |
+          npm install --no-save @stoplight/spectral-cli @apidevtools/swagger-cli
+
+      - name: Spectral lint
+        run: |
+          npx spectral lint "partner-integration-apis/openapi/*.yaml" --ruleset partner-integration-apis/.spectral.yaml
+
+      - name: Swagger validation
+        run: |
+          for file in partner-integration-apis/openapi/*.yaml; do
+            npx swagger-cli validate "$file"
+          done
