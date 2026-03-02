@@ -1,6 +1,11 @@
-@baseUrl = https://api.example.com
+@baseUrl = https://YOUR_APIC_GATEWAY_HOST
 @partnerId = partner-123
 @token = REPLACE_BEARER_TOKEN
+
+### APIC smoke test: list orders
+GET {{baseUrl}}/v1/partners/{{partnerId}}/orders?page=1&pageSize=5
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
 
 ### Create partner order
 POST {{baseUrl}}/v1/partners/{{partnerId}}/orders

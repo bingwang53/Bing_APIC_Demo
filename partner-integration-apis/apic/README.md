@@ -2,6 +2,8 @@
 
 - Product file: `apic/product.yaml`
 - API contract: `openapi/partner-integration-v1.yaml`
+- End-to-end guide: `docs/publish-to-apic.md`
+- CLI helper: `scripts/publish-apic.ps1`
 
 ## Import flow (SaaS)
 1. Create API from OpenAPI file.

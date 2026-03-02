@@ -1,21 +1,22 @@
 # Partner Integration APIs (IBM API Connect SaaS)
 
-Starter repository for Partner Integration APIs:
+This repo is an APIC-ready demo package for partner order-to-settlement APIs.
 
-- `openapi/partner-integration-v1.yaml` - OpenAPI 3.0 contract
-- `apic/product.yaml` - API Connect Product + plans scaffold
-- `docs/design.md` - domain and governance notes
-- `examples/requests.http` - sample API calls
+- `openapi/partner-integration-v1.yaml`: OpenAPI contract with `x-ibm-configuration`
+- `apic/product.yaml`: API Product with `sandbox`, `standard`, and `premium` plans
+- `examples/requests.http`: APIC gateway request samples for VS Code REST Client
+- `docs/publish-to-apic.md`: step-by-step publish + test guide
+- `scripts/publish-apic.ps1`: APIC CLI publish helper
 
 ## Quick start
 
-1. Review and edit the OpenAPI contract.
-2. Update APIC product/plan definitions to match your org.
-3. Import API + Product into IBM API Connect SaaS.
-4. Use GitHub Actions workflow `.github/workflows/openapi-ci.yml` to lint and validate OpenAPI on push/PR.
+1. Set your backend endpoint in `openapi/partner-integration-v1.yaml`.
+2. Publish the API + Product using the APIC UI or `scripts/publish-apic.ps1`.
+3. Create/subscribe a consumer app in Developer Portal.
+4. Generate an OAuth token for that app.
+5. Set `@baseUrl` and `@token` in `examples/requests.http` and send requests.
 
-## Suggested next steps
+## Validation
 
-- Add mock backend or gateway assembly
-- Add CI linting for OpenAPI
-- Add contract tests
+- GitHub workflow: `.github/workflows/openapi-ci.yml`
+- Lint rules: `.spectral.yaml`

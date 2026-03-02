@@ -5,7 +5,7 @@ info:
   description: Partner-facing APIs for order intake, status, shipments, settlements, reports, and webhooks.
 x-ibm-name: partner-integration-api
 servers:
-  - url: https://api.example.com
+  - url: https://YOUR_APIC_GATEWAY_HOST
 security:
   - oauth2ClientCredentials: []
 x-ibm-configuration:
