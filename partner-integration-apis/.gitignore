@@ -1,0 +1,16 @@
+# OS / tooling
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node / Python cache if used later
+node_modules/
+__pycache__/
+*.pyc
+
+# APIC exports/artifacts
+*.tgz
+*.zip

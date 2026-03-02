@@ -1,0 +1,73 @@
+@baseUrl = https://api.example.com
+@partnerId = partner-123
+@token = REPLACE_BEARER_TOKEN
+
+### Create partner order
+POST {{baseUrl}}/v1/partners/{{partnerId}}/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+X-Partner-Id: {{partnerId}}
+Idempotency-Key: 6f6b92f5-bfdb-4f2c-a4e8-32ea989a0095
+
+{
+  "externalOrderId": "EXT-10001",
+  "currency": "USD",
+  "items": [
+    {"sku": "ABC-001", "quantity": 2, "unitPrice": 19.99}
+  ]
+}
+
+### Get order status
+GET {{baseUrl}}/v1/partners/{{partnerId}}/orders/ord_001
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
+
+### List orders
+GET {{baseUrl}}/v1/partners/{{partnerId}}/orders?status=created&from=2026-02-01&to=2026-02-28&page=1&pageSize=20
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
+
+### Create shipment
+POST {{baseUrl}}/v1/partners/{{partnerId}}/shipments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+X-Partner-Id: {{partnerId}}
+
+{
+  "orderId": "ord_001",
+  "carrier": "UPS",
+  "trackingNumber": "1Z999AA10123456784",
+  "shippedAt": "2026-02-22T18:25:43Z"
+}
+
+### Get settlements
+GET {{baseUrl}}/v1/partners/{{partnerId}}/settlements?month=2026-02
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
+
+### Get sales report
+GET {{baseUrl}}/v1/partners/{{partnerId}}/reports/sales?from=2026-02-01&to=2026-02-28&groupBy=day
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
+
+### Register webhook
+POST {{baseUrl}}/v1/partners/{{partnerId}}/webhooks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+X-Partner-Id: {{partnerId}}
+
+{
+  "url": "https://partner.example.com/hooks/orders",
+  "secret": "replace-me",
+  "events": ["order.created", "order.shipped"]
+}
+
+### List webhooks
+GET {{baseUrl}}/v1/partners/{{partnerId}}/webhooks
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}
+
+### Test webhook
+POST {{baseUrl}}/v1/partners/{{partnerId}}/webhooks/wh_001/test
+Authorization: Bearer {{token}}
+X-Partner-Id: {{partnerId}}

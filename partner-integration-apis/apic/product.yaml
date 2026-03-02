@@ -1,0 +1,28 @@
+product: 1.0.0
+info:
+  name: partner-apis-product
+  title: Partner APIs Product
+  version: 1.0.0
+  summary: Product exposing partner integration APIs.
+apis:
+  partner-integration-api:
+    $ref: ../openapi/partner-integration-v1.yaml
+plans:
+  sandbox:
+    title: Sandbox
+    description: For development and testing usage.
+    rate-limits:
+      default:
+        value: 50/1minute
+  standard:
+    title: Standard
+    description: Production baseline for partners.
+    rate-limits:
+      default:
+        value: 200/1minute
+  premium:
+    title: Premium
+    description: High-throughput and advanced controls.
+    rate-limits:
+      default:
+        value: 1000/1minute
