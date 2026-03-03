@@ -28,6 +28,7 @@ x-ibm-configuration:
           timeout: 60
           target-url: $(backend-url)
   activity-log:
+    enabled: true
     success-content: activity
     error-content: payload
 paths:
